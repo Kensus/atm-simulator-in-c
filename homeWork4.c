@@ -1,22 +1,12 @@
 /* program to demenstate Automatic Teller Machine(ATM) using c programming language
  * user will enter 1 to insert card
  * the defaul user pin is 1234
+ * 
  */
 
 
 
 #include<stdio.h>
-
-// constants enumaration to represent ATM status
-/*
-enum AtmStatus
-{
-   AtmStatus_stop,
-   AtmStatus_cardIn,
-   AtmStatus_cardOut
-
-};
-*/
 
 // display welcome note function prototype
 void  displayWelcomeScreen();
@@ -34,11 +24,15 @@ int readUserPinNumber();
 void displayMenu();
 
 double getBalance(); // function prototype to check account balance
-double withdrawChash(double amount ); // function prototype to withdraw cash
-double makeTransfer(double ); // function prototype to make cash transfer
-void checkAccountTransactions(); // function prototype to check on account transaction
-void printReceipt(); // function prototype to print receipt
 
+// subroutines provided by the atm to the user
+double withdrawCash(double amount ); // function prototype to withdraw cash
+double checkBalance(); // function prototype to checkBalance
+void checkAccountTransactions(); // function prototype to check on account transaction
+double makeTransfer(double ); // function prototype to make cash transfer
+
+
+void printReceipt(); // function prototype to print receipt
 void clearInputBuffer(void); // funtion prototype
 
 
@@ -55,7 +49,9 @@ int main()
 // display welcome note to the user
 void  displayWelcomeScreen()
 {
-    printf("\t%20s\t\n\t%20s\t\n\t%20s\t\n\t%20s ", "Welcome",  " Insert card",  " Thankyou", "To insert atm card enter digit  1 > ");
+    printf("%20s\n%20s\n%20s\n","Welcome"," Insert card",  " Thankyou");
+    puts("");
+    printf("%20s","To insert atm card enter digit  1 > ");
 
     // loop untill user insert the card
     while( readIntegersFromUser() != 1)
